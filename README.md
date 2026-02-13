@@ -172,15 +172,15 @@ graph TD
     Auth --> Buyer[Customer / Buyer]
     
     subgraph Seller_Auth
-        S_Login[/seller/login]
-        S_Reg[/register]
-        S_Reset[/forgot-password]
+        S_Login["/seller/login"]
+        S_Reg["/register"]
+        S_Reset["/forgot-password"]
     end
     
     subgraph Buyer_Auth
-        B_Login[/store/{slug}/login]
-        B_Reg[/store/{slug}/register]
-        B_Guest[Guest Checkout]
+        B_Login["/store/{slug}/login"]
+        B_Reg["/store/{slug}/register"]
+        B_Guest["Guest Checkout"]
     end
 ```
 
@@ -294,177 +294,7 @@ EMAIL TEMPLATE SYSTEM
 ```
 
 
-## Installation & Setup
 
-### Requirements
-- PHP 8.2 or higher
-- Composer
-- Node.js 18+ and NPM
-- MySQL 8.0+ or PostgreSQL 13+
-- Redis (optional, for caching and queues)
-
-### Installation Steps
-
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd <project-directory>
-   ```
-
-2. **Install PHP dependencies**
-   ```bash
-   composer install
-   ```
-
-3. **Install Node dependencies**
-   ```bash
-   npm install
-   ```
-
-4. **Environment configuration**
-   ```bash
-   cp .env.example .env
-   php artisan key:generate
-   ```
-
-5. **Configure database**
-   Edit `.env` file with your database credentials:
-   ```
-   DB_CONNECTION=mysql
-   DB_HOST=127.0.0.1
-   DB_PORT=3306
-   DB_DATABASE=your_database
-   DB_USERNAME=your_username
-   DB_PASSWORD=your_password
-   ```
-
-6. **Run migrations**
-   ```bash
-   php artisan migrate
-   ```
-
-7. **Seed database (optional)**
-   ```bash
-   php artisan db:seed
-   ```
-
-8. **Create storage link**
-   ```bash
-   php artisan storage:link
-   ```
-
-9. **Build frontend assets**
-   ```bash
-   npm run build
-   ```
-
-10. **Start development server**
-    ```bash
-    composer dev
-    ```
-    Or separately:
-    ```bash
-    php artisan serve
-    php artisan queue:listen
-    npm run dev
-    ```
-
-### Production Deployment
-
-1. **Optimize application**
-   ```bash
-   composer install --optimize-autoloader --no-dev
-   php artisan config:cache
-   php artisan route:cache
-   php artisan view:cache
-   npm run build
-   ```
-
-2. **Set up queue worker**
-   ```bash
-   php artisan queue:work --tries=3
-   ```
-
-3. **Set up cron job**
-   Add to crontab:
-   ```
-   * * * * * cd /path-to-project && php artisan schedule:run >> /dev/null 2>&1
-   ```
-
-4. **Configure web server** (Nginx/Apache)
-   Point document root to `/public` directory
-
-
-## Configuration
-
-### Payment Gateway Configuration
-
-Configure payment gateways in the store settings panel:
-
-**Stripe**
-- API Key
-- Secret Key
-- Webhook Secret
-
-**PayPal**
-- Client ID
-- Client Secret
-- Mode (Sandbox/Live)
-
-**Razorpay**
-- Key ID
-- Key Secret
-
-**Cashfree**
-- App ID
-- Secret Key
-
-And 25+ more payment gateways...
-
-### Email Configuration
-
-Configure SMTP settings in `.env`:
-```
-MAIL_MAILER=smtp
-MAIL_HOST=smtp.mailtrap.io
-MAIL_PORT=2525
-MAIL_USERNAME=your_username
-MAIL_PASSWORD=your_password
-MAIL_ENCRYPTION=tls
-MAIL_FROM_ADDRESS=noreply@example.com
-MAIL_FROM_NAME="${APP_NAME}"
-```
-
-### Storage Configuration
-
-**Local Storage** (Default)
-```
-FILESYSTEM_DISK=public
-```
-
-**AWS S3**
-```
-FILESYSTEM_DISK=s3
-AWS_ACCESS_KEY_ID=your_key
-AWS_SECRET_ACCESS_KEY=your_secret
-AWS_DEFAULT_REGION=us-east-1
-AWS_BUCKET=your_bucket
-```
-
-### Queue Configuration
-
-**Database Queue** (Default)
-```
-QUEUE_CONNECTION=database
-```
-
-**Redis Queue** (Recommended for production)
-```
-QUEUE_CONNECTION=redis
-REDIS_HOST=127.0.0.1
-REDIS_PASSWORD=null
-REDIS_PORT=6379
-```
 
 
 ## Key Features Summary
@@ -651,34 +481,7 @@ Stripe, PayPal, Razorpay, Cashfree, PayStack, Flutterwave, Mollie, PayTabs, Coin
 ─”── tests/                 # Test files
 ```
 
-## Development Commands
 
-```bash
-# Start development server with all services
-composer dev
-
-# Run tests
-php artisan test
-
-# Code formatting
-composer format
-
-# Linting
-npm run lint
-
-# Type checking
-npm run types
-
-# Clear caches
-php artisan cache:clear
-php artisan config:clear
-php artisan route:clear
-php artisan view:clear
-
-# Generate IDE helper files
-php artisan ide-helper:generate
-php artisan ide-helper:models
-```
 
 
 ## Common Workflows
@@ -686,7 +489,7 @@ php artisan ide-helper:models
 ### Creating a New Store
 
 1. Store owner logs in to the platform
-2. Navigates to Stores â†’ Create New Store
+2. Navigates to Stores → Create New Store
 3. Fills in store details (name, slug, theme, domain)
 4. Configures payment gateways
 5. Sets up shipping methods
@@ -710,17 +513,11 @@ php artisan ide-helper:models
 11. Customer receives status updates
 12. Order is marked as delivered
 
-## Support & Documentation
 
-For detailed documentation, please refer to:
-- User Guide (for store owners)
-- API Documentation (for developers)
-- Theme Development Guide
-- Payment Gateway Integration Guide
 
 ## License
 
-This project is proprietary software. All rights reserved.
+© Syed Hassan. All Rights Reserved.
 
 ## Version
 
